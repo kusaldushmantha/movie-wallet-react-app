@@ -1,10 +1,10 @@
 import React from "react";
-import Home from "./modules/home/home";
+import Index from "./modules/home";
 
 function app() {
-  return (
-      <Home/>
-  );
+    return (
+        <Index/>
+    );
 }
 
 export default app;
