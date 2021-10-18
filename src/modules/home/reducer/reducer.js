@@ -11,3 +11,5 @@ const homeReducer = ( state = initialState, { type: eventType, payload } ) => {
             return state;
     }
 }
+
+export default homeReducer;
