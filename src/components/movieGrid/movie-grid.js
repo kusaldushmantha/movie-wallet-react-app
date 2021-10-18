@@ -5,8 +5,7 @@ import PropTypes from 'prop-types';
 class MovieGrid extends Component {
 
     render() {
-        const styleClasses = `${ this.props.styles } ${ styles[ 'grid' ] }`
-        return <div className={ styleClasses }>
+        return <div className={ `${ this.props.styles } ${ styles[ 'grid' ] }` }>
             <ul>
                 <li>First movie</li>
                 <li>Second movie</li>

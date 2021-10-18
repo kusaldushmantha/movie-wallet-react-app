@@ -1,9 +1,10 @@
 import React from "react";
-import Index from "./modules/home";
+import HomePage from "./modules/home";
+import { Route } from "react-router-dom";
 
 function app() {
     return (
-        <Index/>
+        <Route path='/home'><HomePage/></Route>
     );
 }
 

@@ -5,6 +5,7 @@ import { createReducer } from "./rootReducer";
 import { applyMiddleware, createStore } from "redux";
 import immutableTransform from 'redux-persist-transform-immutable'
 import rootSaga from "./rootSaga";
+import { composeWithDevTools } from "redux-devtools-extension";
 
 const persistConfig = {
     transforms: [ immutableTransform() ],
@@ -13,10 +14,26 @@ const persistConfig = {
     whitelist: [ 'auth' ], // Only this will be persisted to the browser localStorage
 }
 
-export default ( state = {}, history ) => {
+const configureStore = ( preloadedState ) => {
+
+    const rootReducer = createReducer();
+
     const sagaMiddleware = createSagaMiddleware();
-    const persistedReducer = persistReducer( persistConfig, createReducer() )
-    const store = createStore( persistedReducer, state, applyMiddleware( sagaMiddleware ) )
+    const middlewares = [ sagaMiddleware ];
+    const middlewareEnhancers = applyMiddleware( ...middlewares )
+
+    const enhancers = [ middlewareEnhancers ]
+    const composedEnhancers = composeWithDevTools( ...enhancers )
+    const persistedReducer = persistReducer( persistConfig, rootReducer )
+
+    const store = createStore( persistedReducer, preloadedState, composedEnhancers )
     sagaMiddleware.run( rootSaga );
+
+    if ( process.env.NODE_ENV !== 'production' && module.hot ) {
+        module.hot.accept( './rootReducer', () => store.replaceReducer( rootReducer ) )
+    }
+
     return store;
 }
+
+export default configureStore;

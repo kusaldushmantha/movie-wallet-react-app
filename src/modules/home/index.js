@@ -2,16 +2,16 @@ import React, { PureComponent } from 'react';
 import styles from './styles/home.module.scss';
 import MovieGrid from "../../components/movieGrid/movie-grid";
 
-class Index extends PureComponent {
+class HomePage extends PureComponent {
     render() {
         return (
             <div className={ styles[ 'movie-grid' ] }>
-                <MovieGrid/>
+                <MovieGrid styles={ styles[ 'grid' ] }/>
             </div>
         );
     }
 }
 
-export default Index;
+export default HomePage;
 
 
