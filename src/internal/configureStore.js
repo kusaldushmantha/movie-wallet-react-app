@@ -28,6 +28,7 @@ const configureStore = ( preloadedState ) => {
 
     const store = createStore( persistedReducer, preloadedState, composedEnhancers )
     sagaMiddleware.run( rootSaga );
+    // sagaMiddleware.run( effects );
 
     if ( process.env.NODE_ENV !== 'production' && module.hot ) {
         module.hot.accept( './rootReducer', () => store.replaceReducer( rootReducer ) )
