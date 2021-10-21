@@ -1,10 +1,15 @@
-import React from "react";
+import React, { Fragment } from "react";
 import HomePage from "./modules/home";
-import { Route } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 
 function app() {
     return (
-        <Route path='/home'><HomePage/></Route>
+        <Fragment>
+            <Switch>
+                <Route path='/' exact> <Redirect to='/app'/> </Route>
+                <Route path='/app' exact><HomePage/></Route>
+            </Switch>
+        </Fragment>
     );
 }
 
