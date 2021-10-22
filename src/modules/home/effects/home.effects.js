@@ -14,7 +14,6 @@ export const fetchMoviesSaga = function* () {
     const searchQuery = yield select( getSearchQuery );
     yield put( fetchMoviesStart() );
     const apiResponse = yield call( getMovieFromAPI.bind( null, searchQuery ) );
-    console.log( apiResponse );
     if ( apiResponse.err ) {
         yield put( fetchMoviesFailure() );
     } else {

@@ -1,17 +1,46 @@
 .movie-pane {
   background-color: orangered;
   height: 65vh;
+  position: relative;
+  margin-top: 2.5rem;
 }
 
-.movie-basic {
-  margin-top: 3rem;
+.detail-box {
+  display: flex;
+  align-items: center;
 }
+
+.details {
+  height: 65vh;
+  background-color: #BA265D;
+  width: 70%;
+}
+
+.poster {
+  height: 65vh;
+  background-color: #999999;
+  width: 30%;
+
+  &__img {
+    height: 100%;
+    width: 100%;
+  }
+}
+
 
 .lds-ring {
   display: inline-block;
   position: relative;
   width: 80px;
   height: 80px;
+}
+
+.loadingSpinner {
+  position: absolute;
+  width: 64px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .lds-ring div {

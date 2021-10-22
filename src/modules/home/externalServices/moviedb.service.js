@@ -11,6 +11,8 @@ export const getMovieFromAPI = async function ( movieName ) {
         title: get( apiResponse, [ 'data', 'Title' ] ),
         year: get( apiResponse, [ 'data', 'Year' ] ),
         poster: get( apiResponse, [ 'data', 'Poster' ] ),
-        rating: get( apiResponse, [ 'data', 'imdbRating' ] )
+        rating: get( apiResponse, [ 'data', 'imdbRating' ] ),
+        plot: get( apiResponse, [ 'data', 'Plot' ] ),
+        genre: get( apiResponse, [ 'data', 'Genre' ] ),
     }
 }
