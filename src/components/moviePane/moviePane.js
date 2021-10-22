@@ -2,14 +2,9 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import styles from './moviePane.module.scss';
 import PropTypes from 'prop-types';
-import { fetchMovies } from "../../modules/home/actions";
 import { getFetchedMovies, getIsFetchingMovies, } from "../../modules/home/selectors/home.selectors"
 
 class MoviePane extends Component {
-
-    componentDidMount() {
-        this.props.fetchMovies()
-    }
 
     renderLoadingSpinner() {
         return <div className={ styles[ 'lds-ring' ] }>
@@ -50,6 +45,4 @@ MoviePane.defaultProps = {
 export default connect( ( { home } ) => ( {
     isFetchingMovies: getIsFetchingMovies( home ),
     fetchedMovies: getFetchedMovies( home ),
-} ), {
-    fetchMovies: fetchMovies,
-} )( MoviePane );
+} ), {} )( MoviePane );

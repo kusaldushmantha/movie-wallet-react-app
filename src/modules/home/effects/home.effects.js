@@ -1,20 +1,29 @@
-import { call, put } from 'redux-saga/effects'
+import { call, put, select } from 'redux-saga/effects'
 import {
+    fetchMovies,
     fetchMoviesFailure,
     fetchMoviesFinished,
     fetchMoviesStart,
-    fetchMoviesSuccess
+    fetchMoviesSuccess,
+    setSearchTermInStateStart
 } from "../actions";
 import { getMovieFromAPI } from "../externalServices/moviedb.service";
+import { getSearchQuery } from "../selectors/home.selectors";
 
-export const fetchMovies = function* () {
+export const fetchMoviesSaga = function* () {
+    const searchQuery = yield select( getSearchQuery );
     yield put( fetchMoviesStart() );
-    const apiResponse = yield call( getMovieFromAPI.bind( null, 'matrix' ) );
-    console.log( apiResponse )
+    const apiResponse = yield call( getMovieFromAPI.bind( null, searchQuery ) );
+    console.log( apiResponse );
     if ( apiResponse.err ) {
-        yield put( fetchMoviesFailure() )
+        yield put( fetchMoviesFailure() );
     } else {
-        yield put( fetchMoviesSuccess( apiResponse ) )
+        yield put( fetchMoviesSuccess( apiResponse ) );
     }
-    yield put( fetchMoviesFinished() )
+    yield put( fetchMoviesFinished() );
+}
+
+export const setSearchQuerySaga = function* ( action ) {
+    yield put( setSearchTermInStateStart( action.payload ) )
+    yield put( fetchMovies() )
 }

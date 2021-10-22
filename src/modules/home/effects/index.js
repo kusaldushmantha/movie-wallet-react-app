@@ -1,19 +1,10 @@
 import { takeLatest } from 'redux-saga/effects'
-import { FETCH_MOVIES } from "../constants";
-import { fetchMovies } from "./home.effects";
+import { FETCH_MOVIES, SET_SEARCH_TERM } from "../constants";
+import { fetchMoviesSaga, setSearchQuerySaga } from "./home.effects";
 
-const effects = [ takeLatest( FETCH_MOVIES, fetchMovies ) ]
+const effects = [
+    takeLatest( FETCH_MOVIES, fetchMoviesSaga ),
+    takeLatest( SET_SEARCH_TERM, setSearchQuerySaga ),
+];
 
 export default effects;
-
-// const effects = [ takeLatest( FETCH_MOVIES, fetchMovies ) ]
-
-/*
-  Starts fetchUser on each dispatched `USER_FETCH_REQUESTED` action.
-  Allows concurrent fetches of user.
-*/
-// function* effects() {
-//     yield takeLatest(FETCH_MOVIES, fetchMovies);
-// }
-//
-// export default effects;
