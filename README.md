@@ -10,7 +10,7 @@ associated technologies to get familiar with React, Redux eco-system
 * SCSS
 
 ## DEMO
-Demo site live at  : https://movie-wallet-app-kusalk.netlify.app/app
+Demo site live at  : https://movie-wallet-app-kusalk.netlify.app/
 
 ## Scripts
 
