@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/movie-wallet-react-app/static/css/main.43047d05.chunk.css",
+    "main.js": "/movie-wallet-react-app/static/js/main.6fd57566.chunk.js",
+    "main.js.map": "/movie-wallet-react-app/static/js/main.6fd57566.chunk.js.map",
+    "runtime-main.js": "/movie-wallet-react-app/static/js/runtime-main.6fbdcc09.js",
+    "runtime-main.js.map": "/movie-wallet-react-app/static/js/runtime-main.6fbdcc09.js.map",
+    "static/js/2.a8b33d80.chunk.js": "/movie-wallet-react-app/static/js/2.a8b33d80.chunk.js",
+    "static/js/2.a8b33d80.chunk.js.map": "/movie-wallet-react-app/static/js/2.a8b33d80.chunk.js.map",
+    "index.html": "/movie-wallet-react-app/index.html",
+    "static/css/main.43047d05.chunk.css.map": "/movie-wallet-react-app/static/css/main.43047d05.chunk.css.map",
+    "static/js/2.a8b33d80.chunk.js.LICENSE.txt": "/movie-wallet-react-app/static/js/2.a8b33d80.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6fbdcc09.js",
+    "static/js/2.a8b33d80.chunk.js",
+    "static/css/main.43047d05.chunk.css",
+    "static/js/main.6fd57566.chunk.js"
+  ]
+}
