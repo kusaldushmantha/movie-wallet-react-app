@@ -1,6 +1,4 @@
 .movie-pane {
-  background-color: orangered;
-  height: 65vh;
   position: relative;
   margin-top: 2.5rem;
 }
@@ -8,16 +6,74 @@
 .detail-box {
   display: flex;
   align-items: center;
+  box-shadow: var(--color-grey-dark-2) 1px 1px 5px;
 }
 
 .details {
-  height: 65vh;
-  background-color: #BA265D;
+  background-color: var(--color-grey-light-2);
   width: 70%;
+  padding: 1.2rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  &__content {
+    & > &__item h3 {
+      font-size: 2.5rem;
+      font-family: 'Architects Daughter', sans-serif;
+      font-weight: 500;
+      text-shadow: 0.1px 0.1px 2px #aaa;
+    }
+
+    & > &__item p {
+      font-size: 1.8rem;
+      font-family: 'Architects Daughter', sans-serif;
+      font-weight: 100;
+    }
+
+    &__item {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__favourite {
+    display: flex;
+    justify-content: center;
+    margin: 1.3rem 0 1rem 0;
+    flex-direction: row;
+    width: 100%;
+
+    &__btn {
+      background-color: var(--color-grey-light-3);
+      padding: 0.5rem;
+      border-radius: 20px;
+      box-shadow: 0.5rem 0.5rem 2rem var(--color-grey-dark-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      & > span {
+        display: block;
+        margin-right: 0.5rem;
+      }
+
+      & > p {
+        font-size: 1.2rem;
+        font-family: 'Architects Daughter', sans-serif;
+        font-weight: 100;
+      }
+
+      &:active {
+        transform: translateY(2px);
+      }
+    }
+
+  }
+
 }
 
 .poster {
-  height: 65vh;
   background-color: #999999;
   width: 30%;
 

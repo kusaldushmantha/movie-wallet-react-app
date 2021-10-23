@@ -23,7 +23,7 @@ class MoviePane extends Component {
 
     renderMovie() {
         const movie = this.props.fetchedMovie;
-        return <div className={ styles[ 'detail-box' ] }>\
+        return <div className={ styles[ 'detail-box' ] }>
             { this.renderMovieDetails( movie ) };
             { this.renderMoviePoster( movie ) };
         </div>
@@ -32,12 +32,31 @@ class MoviePane extends Component {
     renderMovieDetails( movie ) {
         return (
             <div className={ styles[ 'details' ] }>
-                <h4>Title:</h4><p>{ movie.title }</p>
-                <h4>Year:</h4><p>{ movie.year }</p>
-                <h4>Rating:</h4><p>{ movie.rating }</p>
-                <h4>Genre:</h4><p>{ movie.genre }</p>
-                <h4>Plot:</h4><p>{ movie.plot }</p>
+                <div className={ styles[ 'details__content' ] }>
+                    <div className={ styles[ 'details__content__item' ] }>
+                        <h3>Title</h3><p>{ movie.title }</p>
+                    </div>
+                    <div className={ styles[ 'details__content__item' ] }>
+                        <h3>Year</h3><p>{ movie.year }</p>
+                    </div>
+                    <div className={ styles[ 'details__content__item' ] }>
+                        <h3>Rating</h3><p>{ movie.rating }</p>
+                    </div>
+                    <div className={ styles[ 'details__content__item' ] }>
+                        <h3>Genre</h3><p>{ movie.genre }</p>
+                    </div>
+                    <div className={ styles[ 'details__content__item' ] }>
+                        <h3>Plot</h3><p>{ movie.plot }</p>
+                    </div>
+                </div>
+                <div className={ styles[ 'details__favourite' ] }>
+                    <button className={ styles[ 'details__favourite__btn' ] }>
+                        <span className="material-icons-round">favorite_border</span>
+                        <p>Add to Favourites</p>
+                    </button>
+                </div>
             </div>
+
         );
     }
 

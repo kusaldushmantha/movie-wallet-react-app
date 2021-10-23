@@ -6,7 +6,12 @@ class Header extends Component {
     render() {
         return (
             <header className={ styles[ 'header' ] }>
-                <h1>Movie Wallet</h1>
+                <div className={ styles[ 'header__logo' ] }>
+                    <span className="material-icons">live_tv</span><h1>Movie Wallet</h1>
+                </div>
+                <div className={ styles[ 'header__favourites' ] }>
+                    <button><span className="material-icons-round">favorite_border</span></button>
+                </div>
             </header>
         );
     }
