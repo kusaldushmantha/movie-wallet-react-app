@@ -3,7 +3,7 @@ import { callAsync } from "../../../internal/apiCommons";
 import { get } from 'lodash';
 
 export const getMovieFromAPI = async function ( movieName ) {
-    const apiResponse = await callAsync( () => axios.get( 'http://www.omdbapi.com/?apikey=ea82c66a&t=' + movieName ) )
+    const apiResponse = await callAsync( () => axios.get( 'https://www.omdbapi.com/?apikey=ea82c66a&t=' + movieName ) )
     if ( apiResponse.err.status ) {
         return apiResponse
     }
