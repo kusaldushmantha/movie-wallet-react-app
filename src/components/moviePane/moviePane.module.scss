@@ -1,6 +1,7 @@
 .movie-pane {
   position: relative;
   margin-top: 2.5rem;
+  height: 65vh;
 }
 
 .detail-box {
@@ -106,10 +107,10 @@
   width: 64px;
   height: 64px;
   margin: 8px;
-  border: 8px solid #fff;
+  border: 8px solid var(--color-primary-dark);
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: #fff transparent transparent transparent;
+  border-color: var(--color-primary-dark) transparent transparent transparent;
 }
 
 .lds-ring div:nth-child(1) {
@@ -131,4 +132,20 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.no-movies {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  & > h3 {
+    font-family: 'Permanent Marker', sans-serif;
+    font-weight: 200;
+    font-size: 2.5rem;
+    padding: 1rem;
+    text-shadow: 0.5px 0.5px 3px var(--color-primary-light);
+  }
+
 }

@@ -23,10 +23,23 @@ class MoviePane extends Component {
 
     renderMovie() {
         const movie = this.props.fetchedMovie;
-        return <div className={ styles[ 'detail-box' ] }>
-            { this.renderMovieDetails( movie ) };
-            { this.renderMoviePoster( movie ) };
-        </div>
+        const isValidMovie = !!movie.title;
+        if ( isValidMovie ) {
+            return <div className={ styles[ 'detail-box' ] }>
+                { this.renderMovieDetails( movie ) }
+                { this.renderMoviePoster( movie ) }
+            </div>
+        } else {
+            return this.renderNoMoviesFound()
+        }
+    }
+
+    renderNoMoviesFound() {
+        return (
+            <div className={ styles[ 'no-movies' ] }>
+                <h3>No Movies Found. Try Another Query</h3>
+            </div>
+        );
     }
 
     renderMovieDetails( movie ) {
