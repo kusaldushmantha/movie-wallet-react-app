@@ -1,4 +1,3 @@
-import { get } from 'lodash';
 import initialState from "./initialState";
 import {
     FETCH_MOVIES_FAILURE,
@@ -21,7 +20,7 @@ const homeReducer = ( state = initialState, action ) => {
         case FETCH_MOVIES_FAILURE:
             return state.set( 'isFetchMovieSuccess', false );
         case SET_SEARCH_TERM_START:
-            return state.set( 'searchQuery', get( payload, 'searchTerm' ) )
+            return state.set( 'searchQuery', payload.searchTerm )
         default:
             return state;
     }

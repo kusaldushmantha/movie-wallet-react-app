@@ -8,7 +8,6 @@ class SearchBox extends Component {
         super( props );
         this.state = {
             inputValue: '',
-            inputSubmitted: false,
         }
     }
 
@@ -16,7 +15,6 @@ class SearchBox extends Component {
         this.setState( () => {
             return {
                 inputValue: event.target.value,
-                inputSubmitted: false,
             }
         } );
     }
@@ -26,16 +24,9 @@ class SearchBox extends Component {
         this.submitValue();
     }
 
-    onBtnClickHandler() {
-        this.submitValue();
-    }
-
     submitValue() {
-        if ( this.state.inputValue && !this.state.inputSubmitted ) {
+        if ( this.state.inputValue ) {
             this.props.formSubmissionHandler( this.state.inputValue );
-            this.setState( () => {
-                return { inputSubmitted: true }
-            } )
         }
     }
 
@@ -47,8 +38,7 @@ class SearchBox extends Component {
                     <input className={ styles[ 'searchbox__input' ] } type='text'
                            placeholder='Search Movies'
                            onChange={ this.onChangeHandler.bind( this ) }/>
-                    <button className={ styles[ 'searchbox__button' ] }
-                            onClick={ this.onBtnClickHandler.bind( this ) }>
+                    <button type='submit' className={ styles[ 'searchbox__button' ] }>
                         <svg className={ styles[ 'searchbox__icon' ] }>
                             <use xlinkHref="img/sprite.svg#icon-magnifying-glass"/>
                         </svg>

@@ -13,7 +13,7 @@ import { getSearchQuery } from "../selectors/home.selectors";
 export const fetchMoviesSaga = function* () {
     const searchQuery = yield select( getSearchQuery );
     yield put( fetchMoviesStart() );
-    const apiResponse = yield call( getMovieFromAPI.bind( null, searchQuery ) );
+    const apiResponse = yield call( getMovieFromAPI, searchQuery );
     if ( apiResponse.err ) {
         yield put( fetchMoviesFailure() );
     } else {
