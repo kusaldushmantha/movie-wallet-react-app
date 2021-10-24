@@ -8,3 +8,4 @@ export const getFetchedMoviesImmutable = createSelector( getStateData, ( state )
 export const getFetchedMovie = createSelector( getFetchedMoviesImmutable, ( movie ) => movie.toJSON() );
 export const getHomeState = createSelector( ( { home } ) => home, convertToJSObject )
 export const getSearchQuery = createSelector( getHomeState, ( state ) => state.searchQuery );
+export const getFavouriteMovies = createSelector( getStateData, ( state ) => state.favouriteMovies.toJSON().map( item => item.toJSON() ) )

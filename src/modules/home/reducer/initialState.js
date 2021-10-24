@@ -5,6 +5,7 @@ const initialState = fromJS( {
     movie: {},
     isFetchMovieSuccess: false,
     searchQuery: '',
+    favouriteMovies: [],
 } )
 
 export default initialState;

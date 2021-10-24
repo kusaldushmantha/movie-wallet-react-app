@@ -1,0 +1,40 @@
+.list {
+  border: 1px solid #d9dddd;
+}
+
+.listItemEven,
+.listItemOdd {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1.5rem 1rem 1.5rem 1rem;
+}
+
+.listItemEven {
+  background-color: #f8f8f0;
+}
+
+.list-img {
+  display: inline-block;
+  height: 10rem;
+  width: 7rem;
+}
+
+.list-p {
+  display: inline-block;
+  margin-left: 2rem;
+  font-size: 1.5rem;
+  font-family: 'Architects Daughter', sans-serif;
+  font-weight: 100;
+
+  & span {
+    text-shadow: 0.1px 0.1px 2px #aaa;
+  }
+
+}
+
+.list-content {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}

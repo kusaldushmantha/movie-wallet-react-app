@@ -15,6 +15,6 @@ export const fetchMoviesStart = ActionCreator( FETCH_MOVIES_START );
 export const fetchMoviesFailure = ActionCreator( FETCH_MOVIES_FAILURE );
 export const fetchMoviesSuccess = ActionCreator( FETCH_MOVIES_SUCCESS, ( movie ) => ( movie ) );
 export const fetchMoviesFinished = ActionCreator( FETCH_MOVIES_FINISH );
-export const addMovieToFavourites = ActionCreator( ADD_MOVIE_TO_FAVOURITES, ( movieId ) => ( { movieId } ) );
+export const addMovieToFavourites = ActionCreator( ADD_MOVIE_TO_FAVOURITES, ( movie ) => ( movie ) );
 export const setSearchTermInState = ActionCreator( SET_SEARCH_TERM, ( searchTerm ) => ( { searchTerm } ) );
 export const setSearchTermInStateStart = ActionCreator( SET_SEARCH_TERM_START, ( searchTerm ) => ( searchTerm ) );

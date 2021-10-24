@@ -7,8 +7,16 @@ import {
     getIsFetchingMovie,
     getIsFetchingMovieSuccess
 } from "../../modules/home/selectors/home.selectors"
+import { addMovieToFavourites } from "../../modules/home/actions";
 
 class MoviePane extends Component {
+
+    constructor( props ) {
+        super( props );
+        this.state = {
+            addedToFavourites: false,
+        }
+    }
 
     renderLoadingSpinner() {
         return <div className={ styles[ 'loadingSpinner' ] }>
@@ -42,6 +50,15 @@ class MoviePane extends Component {
         );
     }
 
+    addToFavouritesHandler() {
+        if ( !this.state.addedToFavourites ) {
+            this.props.addMovieToFavourites( this.props.fetchedMovie );
+            this.setState( () => {
+                return { addedToFavourites: true }
+            } )
+        }
+    }
+
     renderMovieDetails( movie ) {
         return (
             <div className={ styles[ 'details' ] }>
@@ -63,7 +80,8 @@ class MoviePane extends Component {
                     </div>
                 </div>
                 <div className={ styles[ 'details__favourite' ] }>
-                    <button className={ styles[ 'details__favourite__btn' ] }>
+                    <button className={ styles[ 'details__favourite__btn' ] }
+                            onClick={ this.addToFavouritesHandler.bind( this ) }>
                         <span className="material-icons-round">favorite_border</span>
                         <p>Add to Favourites</p>
                     </button>
@@ -114,4 +132,6 @@ export default connect( ( { home } ) => ( {
     isFetchingMovie: getIsFetchingMovie( home ),
     isFetchingMovieSuccess: getIsFetchingMovieSuccess( home ),
     fetchedMovie: getFetchedMovie( home ),
-} ), {} )( MoviePane );
+} ), {
+    addMovieToFavourites: addMovieToFavourites
+} )( MoviePane );

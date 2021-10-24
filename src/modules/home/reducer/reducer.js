@@ -1,5 +1,6 @@
 import initialState from "./initialState";
 import {
+    ADD_MOVIE_TO_FAVOURITES,
     FETCH_MOVIES_FAILURE,
     FETCH_MOVIES_FINISH,
     FETCH_MOVIES_START,
@@ -21,6 +22,8 @@ const homeReducer = ( state = initialState, action ) => {
             return state.set( 'isFetchMovieSuccess', false );
         case SET_SEARCH_TERM_START:
             return state.set( 'searchQuery', payload.searchTerm )
+        case ADD_MOVIE_TO_FAVOURITES:
+            return state.set( 'favouriteMovies', state.get( 'favouriteMovies', [] ).push( fromJS( payload ) ) )
         default:
             return state;
     }

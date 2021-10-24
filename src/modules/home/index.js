@@ -7,6 +7,7 @@ import SearchBox from "../../components/searchBox/searchbox";
 import Header from "../../components/header/header";
 import MoviePane from "../../components/moviePane/moviePane";
 import { setSearchTermInState } from "./actions";
+import { getFavouriteMovies } from "./selectors/home.selectors";
 
 class HomePage extends PureComponent {
 
@@ -17,7 +18,7 @@ class HomePage extends PureComponent {
     render() {
         return (
             <Fragment>
-                <Header/>
+                <Header favourites={ this.props.favouriteMovies }/>
                 <div className={ styles[ 'home' ] }>
                     <div className={ styles[ 'content' ] }>
                         <SearchBox formSubmissionHandler={ this.formInputHandler.bind( this ) }/>
@@ -31,14 +32,18 @@ class HomePage extends PureComponent {
 }
 
 HomePage.propTypes = {
-    setSearchTerm: PropTypes.func
+    setSearchTerm: PropTypes.func,
+    favouriteMovies: PropTypes.array,
 };
 
 HomePage.defaultProps = {
     setSearchTerm: noop,
+    favouriteMovies: []
 }
 
-export default connect( ( { home } ) => ( {} ), {
+export default connect( ( { home } ) => ( {
+    favouriteMovies: getFavouriteMovies( home ),
+} ), {
     setSearchTerm: setSearchTermInState,
 } )( HomePage );
 
