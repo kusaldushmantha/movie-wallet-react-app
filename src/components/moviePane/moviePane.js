@@ -18,6 +18,14 @@ class MoviePane extends Component {
         }
     }
 
+    componentDidUpdate( prevProps, prevState, snapshot ) {
+        if ( prevState.addedToFavourites ) {
+            this.setState( () => {
+                return { addedToFavourites: false }
+            } )
+        }
+    }
+
     renderLoadingSpinner() {
         return <div className={ styles[ 'loadingSpinner' ] }>
             <div className={ styles[ 'lds-ring' ] }>
