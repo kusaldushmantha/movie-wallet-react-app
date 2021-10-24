@@ -7,14 +7,16 @@ class SearchBox extends Component {
     constructor( props ) {
         super( props );
         this.state = {
-            inputValue: ''
+            inputValue: '',
+            inputSubmitted: false,
         }
     }
 
     onChangeHandler( event ) {
         this.setState( () => {
             return {
-                inputValue: event.target.value
+                inputValue: event.target.value,
+                inputSubmitted: false,
             }
         } );
     }
@@ -29,8 +31,11 @@ class SearchBox extends Component {
     }
 
     submitValue() {
-        if ( this.state.inputValue ) {
+        if ( this.state.inputValue && !this.state.inputSubmitted ) {
             this.props.formSubmissionHandler( this.state.inputValue );
+            this.setState( () => {
+                return { inputSubmitted: true }
+            } )
         }
     }
 
