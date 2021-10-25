@@ -6,10 +6,11 @@ import PropTypes from 'prop-types';
 
 class SimpleList extends Component {
 
-    renderFavourites( { index } ) {
+    renderFavourites( { index, style } ) {
         const listItem = this.props.list[ index ]
         return (
-            <div className={ index % 2 ? styles[ 'listItemEven' ] : styles[ 'listItemOdd' ] }>
+            <div className={ index % 2 ? styles[ 'listItemEven' ] : styles[ 'listItemOdd' ] }
+                 style={ style }>
                 <img src={ listItem.poster } alt={ listItem.title }
                      className={ styles[ 'list-img' ] }/>
                 <div className={ styles[ 'list-content' ] }>
@@ -29,7 +30,7 @@ class SimpleList extends Component {
                     className={ styles[ 'list' ] }
                     height={ 300 }
                     itemCount={ this.props.list.length }
-                    itemSize={ 35 }
+                    itemSize={ 120 }
                     width={ 300 }
                 >
                     { this.renderFavourites.bind( this ) }
