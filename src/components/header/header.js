@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styles from './header.module.scss';
 import PropTypes from "prop-types";
-import { noop } from 'lodash';
 import SimpleList from "../list/list";
 
 class Header extends Component {
@@ -26,7 +25,7 @@ class Header extends Component {
                 </div>
                 <div className={ styles[ 'header__favourites' ] }>
                     <button
-                        onClick={ isFavouritesAvailable ? this.renderFavouritesList.bind( this ) : noop }>
+                        onClick={ this.renderFavouritesList.bind( this ) }>
                         { !isFavouritesAvailable &&
                         <span className="material-icons-round">favorite_border</span> }
                         { isFavouritesAvailable &&

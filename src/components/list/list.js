@@ -24,8 +24,8 @@ class SimpleList extends Component {
     }
 
     render() {
-        return (
-            <div className={ this.props.style }>
+        if ( this.props.list.length > 0 ) {
+            return <div className={ this.props.style }>
                 <List
                     className={ styles[ 'list' ] }
                     height={ 300 }
@@ -36,7 +36,8 @@ class SimpleList extends Component {
                     { this.renderFavourites.bind( this ) }
                 </List>
             </div>
-        )
+        }
+        return null;
     }
 }
 

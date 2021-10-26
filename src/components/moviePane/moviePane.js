@@ -4,10 +4,11 @@ import styles from './moviePane.module.scss';
 import PropTypes from 'prop-types';
 import {
     getFetchedMovie,
+    getIsFavouriteMovie,
     getIsFetchingMovie,
-    getIsFetchingMovieSuccess
+    getIsFetchingMovieSuccess,
 } from "../../modules/home/selectors/home.selectors"
-import { addMovieToFavourites } from "../../modules/home/actions";
+import { addMovieToFavourites, removeMovieFromFavourites } from "../../modules/home/actions";
 
 class MoviePane extends Component {
 
@@ -19,9 +20,15 @@ class MoviePane extends Component {
     }
 
     componentDidUpdate( prevProps, prevState, snapshot ) {
-        if ( prevState.addedToFavourites ) {
+        if ( prevState.addedToFavourites
+            && ( prevProps.fetchedMovie.title !== this.props.fetchedMovie.title ) ) {
             this.setState( () => {
                 return { addedToFavourites: false }
+            } )
+        }
+        if ( this.props.isFavouriteMovie && !prevState.addedToFavourites ) {
+            this.setState( () => {
+                return { addedToFavourites: true }
             } )
         }
     }
@@ -67,7 +74,35 @@ class MoviePane extends Component {
         }
     }
 
+    removeFromFavouritesHandler() {
+        if ( this.state.addedToFavourites ) {
+            this.props.removeMovieFromFavourites( this.props.fetchedMovie );
+            this.setState( () => {
+                return { addedToFavourites: false }
+            } )
+        }
+    }
+
     renderMovieDetails( movie ) {
+        let favouriteBtn;
+        if ( this.state.addedToFavourites ) {
+            const btnStyles = `${ styles[ 'details__favourite__btn' ] }`
+            const iconStyles = `material-icons ${ styles[ 'favourited' ] }`
+            favouriteBtn = ( <button className={ btnStyles }
+                                     onClick={ this.removeFromFavouritesHandler.bind( this ) }>
+                <span className={ iconStyles }>favorite</span>
+                <p>Favourite Movie</p>
+            </button> )
+        } else {
+            const btnStyles = `${ styles[ 'details__favourite__btn' ] }`
+            const iconStyles = `material-icons-round`
+            favouriteBtn = ( <button className={ btnStyles }
+                                     onClick={ this.addToFavouritesHandler.bind( this ) }>
+                <span className={ iconStyles }>favorite_border</span>
+                <p>Add to Favourites</p>
+            </button> )
+        }
+
         return (
             <div className={ styles[ 'details' ] }>
                 <div className={ styles[ 'details__content' ] }>
@@ -88,11 +123,7 @@ class MoviePane extends Component {
                     </div>
                 </div>
                 <div className={ styles[ 'details__favourite' ] }>
-                    <button className={ styles[ 'details__favourite__btn' ] }
-                            onClick={ this.addToFavouritesHandler.bind( this ) }>
-                        <span className="material-icons-round">favorite_border</span>
-                        <p>Add to Favourites</p>
-                    </button>
+                    { favouriteBtn }
                 </div>
             </div>
 
@@ -120,6 +151,7 @@ class MoviePane extends Component {
 MoviePane.propTypes = {
     styles: PropTypes.string,
     isFetchingMovie: PropTypes.bool,
+    isFavouriteMovie: PropTypes.bool,
     fetchedMovie: PropTypes.shape( {
         title: PropTypes.string,
         year: PropTypes.string,
@@ -134,12 +166,15 @@ MoviePane.defaultProps = {
     styles: '',
     isFetchingMovie: false,
     fetchedMovie: [],
+    isFavouriteMovie: false,
 }
 
 export default connect( ( { home } ) => ( {
     isFetchingMovie: getIsFetchingMovie( home ),
     isFetchingMovieSuccess: getIsFetchingMovieSuccess( home ),
     fetchedMovie: getFetchedMovie( home ),
+    isFavouriteMovie: getIsFavouriteMovie( home ),
 } ), {
-    addMovieToFavourites: addMovieToFavourites
+    addMovieToFavourites: addMovieToFavourites,
+    removeMovieFromFavourites: removeMovieFromFavourites,
 } )( MoviePane );

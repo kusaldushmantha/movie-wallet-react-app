@@ -42,7 +42,7 @@ HomePage.defaultProps = {
 }
 
 export default connect( ( { home } ) => ( {
-    favouriteMovies: getFavouriteMovies( home ),
+    favouriteMovies: Array.from( getFavouriteMovies( home ) ),
 } ), {
     setSearchTerm: setSearchTermInState,
 } )( HomePage );
